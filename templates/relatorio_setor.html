@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Relatório de Avaliações de Setor{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="pt-3">Relatório de Avaliações de Setor ({{ ano_atual }})</h2>
+
+    <!-- Tabela de contagens por setor -->
+    <div class="table-responsive my-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Setor</th>
+                    <th>Ótimo</th>
+                    <th>Regular</th>
+                    <th>Ruim</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for setor, avaliacao in avaliacao_por_setor.items %}
+                <tr>
+                    <td>{{ setor }}</td>
+                    <td>{{ avaliacao.Ótimo }}</td>
+                    <td>{{ avaliacao.Regular }}</td>
+                    <td>{{ avaliacao.Ruim }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Gráfico das Avaliações -->
+    <h4 class="text-center">Gráfico das Avaliações por Setor</h4>
+    <div class="d-flex justify-content-center mt-3">
+        <img src="data:image/png;base64,{{ grafico_base64 }}" alt="Gráfico de Avaliações por Setor" class="img-fluid">
+    </div>
+</div>
+{% endblock %}

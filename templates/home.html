@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h2 class="mb-4">Bem-vindo ao Sistema de Avaliação</h2>
+    <p class="lead">Selecione uma das opções abaixo para continuar.</p>
+
+    <div class="row justify-content-center mt-5">
+        <!-- Card para Avaliar Setor -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Avaliação de Setores</h5>
+                    <p class="card-text">Dê sua opinião sobre os setores da instituição.</p>
+                    <a href="{% url 'avaliar_setor' %}" class="btn btn-primary">Avaliar Setor</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para Avaliar Aula -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Avaliação de Aulas</h5>
+                    <p class="card-text">Dê sua opinião sobre as aulas oferecidas.</p>
+                    <a href="{% url 'avaliar_aula' %}" class="btn btn-primary">Avaliar Aula</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card para o Painel Administrativo -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Painel Administrativo</h5>
+                    <p class="card-text">Acesse relatórios e gráficos das avaliações.</p>
+                    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Acessar Painel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

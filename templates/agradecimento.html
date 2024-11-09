@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Agradecimento{% endblock %}
+
+{% block content %}
+    <div class="text-center p-4">
+        <h2 class="text-success">Obrigado!</h2>
+        <p class="lead">Sua avaliação foi enviada com sucesso. Agradecemos por contribuir!</p>
+        <a href="{% url 'avaliar_aula' %}" class="btn btn-outline-primary mt-3">Avaliação da Aula</a>
+        <a href="{% url 'avaliar_setor' %}" class="btn btn-outline-primary mt-3">Avaliação de Setor</a>
+    </div>
+{% endblock %}

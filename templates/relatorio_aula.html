@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Relatório de Avaliações de Aula{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="pt-3">Relatório de Avaliações de Aula ({{ ano_atual }})</h2>
+
+    <div class="mt-4">
+        <h4>Quantitativos de Avaliações</h4>
+        <p><strong>Ótimo:</strong> {{ avaliacao_tipos.Ótimo }}</p>
+        <p><strong>Regular:</strong> {{ avaliacao_tipos.Regular }}</p>
+        <p><strong>Ruim:</strong> {{ avaliacao_tipos.Ruim }}</p>
+    </div>
+
+    <div class="mt-5">
+        <h4>Gráfico das Avaliações</h4>
+        <div class="d-flex justify-content-center mt-3">
+            <img src="data:image/png;base64,{{ grafico_base64 }}" alt="Gráfico de Avaliações de Aula" class="img-fluid" style="max-width: 80%;">
+        </div>
+    </div>
+</div>
+{% endblock %}

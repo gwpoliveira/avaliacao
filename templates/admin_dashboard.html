@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Painel Administrativo{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h2 class="pt-4 text-center text-primary"><i class="fas fa-chart-line me-2"></i>Painel Administrativo ({{ ano_atual }})</h2>
+
+    <!-- Seções para Avaliações de Setor e de Aula -->
+    <div class="row">
+
+        <!-- Seção de Avaliações por Setor -->
+        <div class="col-md-6 my-5">
+            <div class="bg-light p-4 rounded shadow-sm">
+                <h4 class="text-secondary mb-3"><i class="fas fa-building me-2"></i>Avaliações por Setor</h4>
+
+                <!-- Botões de Exportação para Setor -->
+                <div class="d-flex gap-3 mb-3">
+                    <a href="{% url 'exportar_excel' %}" class="btn btn-success btn-sm">
+                        <i class="fas fa-file-excel"></i> Exportar para Excel
+                    </a>
+                    <a href="{% url 'exportar_pdf' %}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-file-pdf"></i> Exportar para PDF
+                    </a>
+                </div>
+
+                <!-- Tabela de Avaliações por Setor -->
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Setor</th>
+                                <th>Ótimo</th>
+                                <th>Regular</th>
+                                <th>Ruim</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for setor, avaliacao in avaliacao_por_setor.items %}
+                            <tr>
+                                <td>{{ setor }}</td>
+                                <td>{{ avaliacao.Ótimo }}</td>
+                                <td>{{ avaliacao.Regular }}</td>
+                                <td>{{ avaliacao.Ruim }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Avaliações por Aula -->
+        <div class="col-md-6 my-5">
+            <div class="bg-light p-4 rounded shadow-sm">
+                <h4 class="text-secondary mb-3"><i class="fas fa-chalkboard-teacher me-2"></i>Avaliações por Aula</h4>
+
+                <!-- Botões de Exportação para Aula -->
+                <div class="d-flex gap-3 mb-3">
+                    <a href="{% url 'exportar_excel_aula' %}" class="btn btn-success btn-sm">
+                        <i class="fas fa-file-excel"></i> Exportar para Excel
+                    </a>
+                    <a href="{% url 'exportar_pdf_aula' %}" class="btn btn-danger btn-sm">
+                        <i class="fas fa-file-pdf"></i> Exportar para PDF
+                    </a>
+                </div>
+
+                <!-- Tabela de Avaliações por Aula -->
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Matrícula</th>
+                                <th>Nome</th>
+                                <th>Aula</th>
+                                <th>Avaliação</th>
+                                <th>Data de Avaliação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for avaliacao in avaliacoes_aula %}
+                            <tr>
+                                <td>{{ avaliacao.matricula }}</td>
+                                <td>{{ avaliacao.nome }}</td>
+                                <td>{{ avaliacao.aula }}</td>
+                                <td>{{ avaliacao.get_avaliacao_display }}</td>
+                                <td>{{ avaliacao.data_avaliacao|date:"d/m/Y H:i" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="row">
+        <!-- Gráfico de Avaliações por Setor -->
+        <div class="col-md-6">
+            <h4 class="text-primary mb-4 text-center">Gráfico de Avaliações por Setor</h4>
+            <div class="d-flex justify-content-center">
+                <img src="data:image/png;base64,{{ grafico_base64_setor }}" alt="Gráfico de Avaliações por Setor" class="img-fluid shadow-lg rounded" style="max-width: 80%;">
+            </div>
+        </div>
+
+        <!-- Gráfico de Avaliações por Aula -->
+        <div class="col-md-6">
+            <h4 class="text-primary mb-4 text-center">Gráfico de Avaliações por Aula</h4>
+            <div class="d-flex justify-content-center">
+                <img src="data:image/png;base64,{{ grafico_base64_aula }}" alt="Gráfico de Avaliações por Aula" class="img-fluid shadow-lg rounded" style="max-width: 80%;">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2 {
+    color: #007bff;
+}
+
+footer {
+    font-size: 0.9rem;
+}
+
+#sidebar {
+    min-height: 100vh;
+    position: fixed;
+    width: 250px;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.card-title {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.card {
+    border-radius: 8px;
+}
+
+.container h2 {
+    color: #333;
+}

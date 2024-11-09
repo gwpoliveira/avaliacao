@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Avaliar Setor{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Avaliar Setor</h2>
+<form method="post" class="border rounded p-4 bg-light shadow-sm">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form.nome.label_tag }}
+        {{ form.nome }}
+    </div>
+
+    <div class="form-group">
+        {{ form.whatsapp.label_tag }}
+        {{ form.whatsapp }}
+    </div>
+
+    <div class="form-group">
+        {{ form.setor.label_tag }}
+        {{ form.setor }}  <!-- O Django renderiza como uma dropdown com as opções de setor -->
+    </div>
+
+    <div class="form-group">
+        <label for="avaliacao">Avaliação:</label><br>
+        <label class="form-check form-check-inline">
+            <input type="radio" name="avaliacao" value="otimo" {% if form.avaliacao.value == 'otimo' %}checked{% endif %} class="form-check-input">
+            <img src="{% static 'img/otimo.png' %}" alt="Ótimo" width="50">
+            - ÓTIMO
+        </label>
+        <label class="form-check form-check-inline">
+            <input type="radio" name="avaliacao" value="regular" {% if form.avaliacao.value == 'regular' %}checked{% endif %} class="form-check-input">
+            <img src="{% static 'img/regular.png' %}" alt="Regular" width="50">
+            - REGULAR
+        </label>
+        <label class="form-check form-check-inline">
+            <input type="radio" name="avaliacao" value="ruim" {% if form.avaliacao.value == 'ruim' %}checked{% endif %} class="form-check-input">
+            <img src="{% static 'img/ruim.png' %}" alt="Ruim" width="50">
+            - RUIM
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mt-3">Enviar Avaliação</button>
+</form>
+{% endblock %}
