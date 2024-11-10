@@ -9,7 +9,6 @@
 
     <!-- Seções para Avaliações de Setor e de Aula -->
     <div class="row">
-
         <!-- Seção de Avaliações por Setor -->
         <div class="col-md-6 my-5">
             <div class="bg-light p-4 rounded shadow-sm">
@@ -73,6 +72,7 @@
                             <tr>
                                 <th>Matrícula</th>
                                 <th>Nome</th>
+                                <th>Curso</th> <!-- Exibe o curso -->
                                 <th>Aula</th>
                                 <th>Avaliação</th>
                                 <th>Data de Avaliação</th>
@@ -83,6 +83,7 @@
                             <tr>
                                 <td>{{ avaliacao.matricula }}</td>
                                 <td>{{ avaliacao.nome }}</td>
+                                <td>{{ avaliacao.get_curso_display }}</td> <!-- Exibe o nome do curso -->
                                 <td>{{ avaliacao.aula }}</td>
                                 <td>{{ avaliacao.get_avaliacao_display }}</td>
                                 <td>{{ avaliacao.data_avaliacao|date:"d/m/Y H:i" }}</td>
